@@ -3,5 +3,5 @@ watch-nginx:
 
 watch-background-tests:
 	docker compose exec backend pip install -r requirements-dev.txt
-	iwatch -r -c "docker compose exec backend pytest -v -ra" -e close_write -t ".*.py" ./sekura
+	iwatch -r -c "docker compose exec backend pytest -v -ra" -e close_write -t ".*.py" ./sekura-backend
 
