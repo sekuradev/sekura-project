@@ -1,6 +1,22 @@
 version: "3.3"
 
 services:
+  certificates:
+    image: alpine
+    command:
+      - sh
+      - -c
+      - |
+        if [[ ! -f /opt/certs/server.key ]]; then
+          apk add openssl
+          cd /opt/certs
+          openssl req  -nodes -new -x509 -days 365 -keyout sekura.localhost.key -out sekura.localhost.cert -subj "/C=ES/CN=sekura.localhost" -addext "subjectAltName = DNS:sekura.localhost"
+          openssl req  -nodes -new -x509 -days 365 -keyout sekura.key -out sekura.cert -subj "/C=ES/CN=sekura" -addext "subjectAltName = DNS:sekura"
+          chmod o+r /opt/certs/*.key
+        fi
+    volumes:
+      - ./certs:/opt/certs
+
   db:
     image: postgres
     environment: &secrets

@@ -1,0 +1,9 @@
+[submodule "agent-fake"]
+	path = agent-fake
+	url = git@github.com:sekuradev/agent-fake.git
+[submodule "api"]
+	path = api
+	url = git@github.com:sekuradev/api.git
+[submodule "gateway"]
+	path = gateway
+	url = git@github.com:sekuradev/gateway.git
